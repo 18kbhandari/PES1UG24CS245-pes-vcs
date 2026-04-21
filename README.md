@@ -6,93 +6,27 @@
 
 ---
 
-## 📌 Overview
+# 📌 Phase 1: Object Storage Foundation
 
-This project implements a basic **Version Control System (VCS)** in C.
-It demonstrates how files are tracked, stored, and managed similar to real-world systems like Git.
+### Concepts
 
----
+Content-addressable storage, hashing, atomic writes, directory sharding
 
-## 🎯 Features
+### Implementation
 
-* Object storage using hashing (SHA-256)
-* File indexing system
-* Commit tracking
-* Version management
-* File integrity verification
+* Implemented `object_write`
+* Implemented `object_read`
+* Used SHA-256 hashing
+* Stored objects using sharded directory structure
 
----
+### Testing
 
-## 🛠️ Technologies Used
+* Successfully ran:
 
-* C Programming
-* File Handling
-* Makefile
-
----
-
-## 📂 Project Structure
-
-```id="5f6r1g"
-.
-├── commit.c
-├── commit.h
-├── index.c
-├── index.h
-├── Makefile
-├── README.md
-└── images/
 ```
-
----
-
-## ⚙️ How to Run
-
-### 1️⃣ Clone the repository
-
-```bash id="3ndp3a"
-git clone https://github.com/18kbhandari/PES1UG24CS245-pes-vcs.git
-cd PES1UG24CS245-pes-vcs
+make test_objects
+./test_objects
 ```
-
-### 2️⃣ Compile the program
-
-```bash id="6plw2z"
-make
-```
-
-### 3️⃣ Run the program
-
-```bash id="2k0m6d"
-./a.out
-```
-
----
-
-## 🧪 Implementation Details
-
-### 🔹 Phase 1: Object Storage
-
-* `object_write` → Creates object, computes SHA-256 hash, stores data in `.pes/objects/`
-* `object_read` → Reads stored objects, verifies integrity, retrieves data
-
----
-
-### 🔹 Phase 2: Indexing System
-
-* Tracks added files
-* Maintains an index file
-* Updates file status efficiently
-
----
-
-### 🔹 Phase 3: Commit System
-
-* Creates commits with metadata
-* Maintains commit history
-* Links commits with stored objects
-
----
 
 ### 📸 Screenshots
 
@@ -101,42 +35,140 @@ make
   <img src="images/1.B.png" width="300"/>
 </p>
 
+---
+
+# 📌 Phase 2: Tree Objects
+
+### Concepts
+
+Directory hierarchy, recursive structures, file modes
+
+### Implementation
+
+* Implemented `tree_from_index`
+* Built tree hierarchy from index
+* Supported nested paths
+
+### Testing
+
+```
+make test_tree
+./test_tree
+```
+
+### 📸 Screenshots
+
 <p align="center">
   <img src="images/2.A.png" width="300"/>
   <img src="images/2.B.png" width="300"/>
 </p>
+
+---
+
+# 📌 Phase 3: Index (Staging Area)
+
+### Concepts
+
+File tracking, metadata comparison, atomic writes
+
+### Implementation
+
+* Implemented `index_load`
+* Implemented `index_save`
+* Implemented `index_add`
+
+### Output Example
+
+```
+./pes status
+```
+
+### 📸 Screenshots
 
 <p align="center">
   <img src="images/3.A.png" width="300"/>
   <img src="images/3.B.png" width="300"/>
 </p>
 
+---
+
+# 📌 Phase 4: Commits and History
+
+### Concepts
+
+Linked structures, commit history, HEAD reference
+
+### Implementation
+
+* Implemented `commit_create`
+* Linked commits using parent reference
+* Updated HEAD
+
+### Testing
+
+```
+./pes log
+make test-integration
+```
+
+### 📸 Screenshots
+
 <p align="center">
   <img src="images/4.A.png" width="300"/>
   <img src="images/4.B.png" width="300"/>
   <img src="images/4.C.png" width="300"/>
 </p>
-## 📖 Screenshot Description
-
-* **1A–1B:** Object creation and storage
-* **2A–2B:** File indexing and tracking
-* **3A–3B:** Commit operations
-* **4A–4C:** Final output and verification
 
 ---
 
-## 🚀 Future Improvements
+# 📌 Final Integration
 
-* Add branching functionality
-* Improve user interface
-* Add rollback support
-* Optimize storage efficiency
+<p align="center">
+  <img src="images/integration_test1.png" width="300"/>
+  <img src="images/integration_test2.png" width="300"/>
+</p>
 
 ---
 
-## 👨‍💻 Author
+# 📌 Phase 5 & 6: Analysis Questions
 
-**Kushagra Bhandari**
+## 🔹 Q5.1 Checkout Implementation
+
+To implement checkout, update `.pes/HEAD` to target branch, load commit tree, update working directory, and sync index. Complexity arises from handling untracked and modified files safely.
+
+## 🔹 Q5.2 Dirty Working Directory Detection
+
+Compare working directory files with index metadata and hashes. If modified and differs from target commit, abort checkout.
+
+## 🔹 Q5.3 Detached HEAD
+
+Commits are created but not referenced by any branch. They become dangling unless a branch is created pointing to them.
+
+---
+
+## 🔹 Q6.1 Garbage Collection
+
+Use mark-and-sweep algorithm:
+
+* Traverse reachable objects from HEAD and refs
+* Store hashes in HashSet
+* Delete unreachable objects
+
+## 🔹 Q6.2 GC Race Condition
+
+GC may delete newly created objects before commit links them. Git avoids this using a grace period before deletion.
+
+---
+
+# 📌 Conclusion
+
+This project successfully demonstrates the core working principles of a Version Control System including object storage, indexing, commits, and history tracking.
+
+---
+
+# 👨‍💻 Author
+
+Kushagra Bhandari
 PES1UG24CS245
 
 ---
