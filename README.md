@@ -61,6 +61,28 @@
 - Implemented a simplified version control system.  
 
 ---
+## 📸 Screenshots
+
+<p align="center">
+  <img src="images/1.A.png" width="300"/>
+  <img src="images/1.B.png" width="300"/>
+</p>
+
+<p align="center">
+  <img src="images/2.A.png" width="300"/>
+  <img src="images/2.B.png" width="300"/>
+</p>
+
+<p align="center">
+  <img src="images/3.A.png" width="300"/>
+  <img src="images/3.B.png" width="300"/>
+</p>
+
+<p align="center">
+  <img src="images/4.A.png" width="300"/>
+  <img src="images/4.B.png" width="300"/>
+  <img src="images/4.C.png" width="300"/>
+</p>
 
 ## Conclusion
 
