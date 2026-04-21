@@ -94,31 +94,28 @@ make
 
 ---
 
-## 📸 Screenshots
+### 📸 Screenshots
 
 <p align="center">
-  <img src="images/1A.jpeg" width="300"/>
-  <img src="images/1B.jpeg" width="300"/>
+  <img src="images/1.A.png" width="300"/>
+  <img src="images/1.B.png" width="300"/>
 </p>
 
 <p align="center">
-  <img src="images/2A.jpeg" width="300"/>
-  <img src="images/2B.jpeg" width="300"/>
+  <img src="images/2.A.png" width="300"/>
+  <img src="images/2.B.png" width="300"/>
 </p>
 
 <p align="center">
-  <img src="images/3A.jpeg" width="300"/>
-  <img src="images/3B.jpeg" width="300"/>
+  <img src="images/3.A.png" width="300"/>
+  <img src="images/3.B.png" width="300"/>
 </p>
 
 <p align="center">
-  <img src="images/4A.jpeg" width="300"/>
-  <img src="images/4B.jpeg" width="300"/>
-  <img src="images/4C.jpeg" width="300"/>
+  <img src="images/4.A.png" width="300"/>
+  <img src="images/4.B.png" width="300"/>
+  <img src="images/4.C.png" width="300"/>
 </p>
-
----
-
 ## 📖 Screenshot Description
 
 * **1A–1B:** Object creation and storage
